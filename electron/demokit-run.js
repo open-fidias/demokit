@@ -59,16 +59,12 @@ module.exports = function (aMainWindow)
             return ModuleRequire.apply(this, arguments);
         }
 
-        try
-        {
+        try {
             const filePath = process.argv[process.argv.length - 1];
-            console.log('demo file path:', path.resolve(process.cwd(), filePath));
+            // console.log('demo file path:', path.resolve(process.cwd(), filePath));
             const demo = require(path.resolve(process.cwd(), filePath));
-
             await demo();
-        }
-        catch (anException)
-        {
+        } catch (anException) {
             console.log(anException);
         }
 

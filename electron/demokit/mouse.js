@@ -38,14 +38,14 @@ async function moveAndClick({ move, click, effect, window, selector, nth, x, y, 
     const position = await getWorkspaceMousePosition({ window, selector, nth, x, y, space });
     const adjusted = { x: position.x + dx, y: position.y + dy };
 
-    if (move)
-        await moveSmooth({ destination: adjusted });
+    if (move) {
+        robot.moveMouseSmooth(adjusted.x, adjusted.y);
+    }
 
     if (effect)
         await showClickEffect({ point: position, space: Workspace });
 
     if (click)
-        robot.moveMouse(adjusted.x, adjusted.y);
         robot.mouseClick();
 }
 
