@@ -45,6 +45,7 @@ module.exports = function (aMainWindow)
 
         Module.prototype.require = function (aPath)
         {
+            console.log('require path:', aPath);
             const [first, ...rest] = aPath.split(path.sep);
 
             if (first === "demokit" && rest.length > 0)
@@ -61,6 +62,7 @@ module.exports = function (aMainWindow)
         try
         {
             const filePath = process.argv[process.argv.length - 1];
+            console.log('demo file path:', path.resolve(process.cwd(), filePath));
             const demo = require(path.resolve(process.cwd(), filePath));
 
             await demo();

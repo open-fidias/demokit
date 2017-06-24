@@ -3,7 +3,8 @@ const execute = require("demokit/execute");
 const { wait } = require("./demokit");
 const { Workspace, Scene, convert } = require("./coordinate-space");
 const { getCenterRect, getBoundingClientRect } = require("./geometry");
-const { getCursor, performClick } = require("bindings")("mouse");
+// const { getCursor, performClick } = require("bindings")("mouse");
+const robot = require('robotjs')
 
 
 exports.click = async function ({ move = true, effect = true, window, selector, nth, x, y, dx = 0, dy = 0, reveal = false, space = Scene })
@@ -41,10 +42,11 @@ async function moveAndClick({ move, click, effect, window, selector, nth, x, y, 
         await moveSmooth({ destination: adjusted });
 
     if (effect)
-        await showClickEffect({ point: adjusted, space: Workspace });
+        await showClickEffect({ point: position, space: Workspace });
 
     if (click)
-        performClick(adjusted.x, adjusted.y);
+        robot.moveMouse(adjusted.x, adjusted.y);
+        robot.mouseClick();
 }
 
 exports.hide = async function ()
@@ -182,11 +184,11 @@ async function moveSmooth({ destination, delta })
 
 exports.cursor = async function ({ name, imageURL, size, hotSpot })
 {
-    if (name)
-        await setCursor(getCursor(name));
-
-    else
-        await setCursor({ imageURL, size, hotSpot });
+    // if (name)
+    //     await setCursor(getCursor(name));
+    //
+    // else
+    await setCursor({ imageURL, size, hotSpot });
 }
 
 async function setCursor({ imageURL, size, hotSpot })

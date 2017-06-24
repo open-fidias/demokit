@@ -109,7 +109,7 @@ module.exports.demo = async function demo({ children })
 {
     const context = { };
 
-    await (require("./mouse").cursor({ name: "default" }));
+    await (require("./mouse"));
 
     try
     {

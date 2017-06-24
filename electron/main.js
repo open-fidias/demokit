@@ -5,6 +5,7 @@ const app = electron.app
 const BrowserWindow = electron.BrowserWindow;
 const path = require("path");
 const cwd = process.cwd();
+const env = process.env.NODE_ENV || 'development'
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -16,6 +17,7 @@ let mainWindow
 app.on('ready', function() {
   // Create the browser window.
   mainWindow = new BrowserWindow({width: 2000, height: 1000})
+  mainWindow.setFullScreen(true)
 
   // and load the index.html of the app.
   mainWindow.loadURL("file://" + require.resolve("./main-window/index.html"));
@@ -37,8 +39,10 @@ app.on('ready', function() {
 
     require("./demokit-run.js")(mainWindow);
 
-  // Open the DevTools.
-   mainWindow.webContents.openDevTools()
+    // Open the DevTools.
+    if (env === 'development') {
+        mainWindow.webContents.openDevTools()
+    }
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {
