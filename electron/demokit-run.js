@@ -45,7 +45,7 @@ module.exports = function (aMainWindow)
 
         Module.prototype.require = function (aPath)
         {
-            console.log('require path:', aPath);
+            // console.log('require path:', aPath);
             const [first, ...rest] = aPath.split(path.sep);
 
             if (first === "demokit" && rest.length > 0)

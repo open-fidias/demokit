@@ -4,14 +4,14 @@
         <style>
             body
             {
-                background:black;
-                color:white;
-                font:14px 'Menlo';
+                background:#2E3436;
+                color:#F6F5EE;
+                font:15px 'mono';
                 padding:3px 5px;
                 line-height: 20px;
                 margin: 0;
             }
-            
+
             #cursor
             {
                 height: 20px;
@@ -22,12 +22,12 @@
                 line-height:14px;
                 position:relative;
             }
-            
+
             #content
             {
-                white-space: pre;
+                word-wrap: break-word;
             }
-            
+
             #capture
             {
                 position: absolute;
@@ -38,19 +38,18 @@
         <script>
             function onChange()
             {
-                document.getElementById("content").innerText = "$ " + document.getElementById("capture").value;
+                document.getElementById("content").innerText = "~ $ " + document.getElementById("capture").value;
             }
-            
+
             function focus()
             {
                 document.getElementById("capture").focus();
             }
-            
-            window.onfocus = focus;
         </script>
     </head>
-    <body onfocus = "focus()" onload = "focus()" tabindex = "0">
-        <textarea id = "capture" oninput = "onChange()" onblur = "focus()" ></textarea>
-        <span id = "content" onfocus = "focus()">$ </span><span id = "cursor">&nbsp;</span>
+    <body onfocus="focus()" onload="focus()" tabindex="0">
+        <textarea id="capture" oninput="onChange()" onblur="focus()"></textarea>
+        <span id="content" onfocus="focus()">~ $ </span><span id="cursor">&nbsp;</span>
+        <footer id="bottom"></footer>
     </body>
 </html>

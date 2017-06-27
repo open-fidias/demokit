@@ -73,7 +73,6 @@ module.exports.type = async function type({ window, children })
     {
         if (typeof child === "string")
             await insertText({ window, text: child });
-
         else
             await (<child window = { window }/>());
     }
