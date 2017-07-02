@@ -26,6 +26,7 @@
             #content
             {
                 word-wrap: break-word;
+                white-space: pre;
             }
 
             #capture
@@ -38,16 +39,27 @@
         <script>
             function onChange()
             {
-                document.getElementById("content").innerText = "~ $ " + document.getElementById("capture").value;
+                document.getElementById("content").innerText = get_ps1()
+                    + document.getElementById("capture").value;
             }
 
             function focus()
             {
                 document.getElementById("capture").focus();
             }
+
+            function onload() {
+                document.getElementById("capture").focus();
+                document.getElementById("content").innerText = get_ps1();
+            }
+
+            function get_ps1() {
+                return document.getElementById("ps1").value
+            }
         </script>
     </head>
-    <body onfocus="focus()" onload="focus()" tabindex="0">
+    <body onfocus="focus()" onload="onload()" tabindex="0">
+        <input type="hidden" id="ps1" value="~ $ " />
         <textarea id="capture" oninput="onChange()" onblur="focus()"></textarea>
         <span id="content" onfocus="focus()">~ $ </span><span id="cursor">&nbsp;</span>
         <footer id="bottom"></footer>

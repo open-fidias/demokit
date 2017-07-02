@@ -12,8 +12,10 @@ module.exports = async function terminalWindow(props)
     });
 }
 
-module.exports.clear = async function clear({ window }) {
-    const selector = 'textarea#capture'
+module.exports.clear = async function clear({ window, ps1 = '~ $ ' }) {
+    const capture = 'textarea#capture'
+    const content = 'input#ps1'
     const value = ''
-    await set({window, selector, value});
+    await set({window, selector: content, value: ps1});
+    await set({window, selector: capture, value});
 }

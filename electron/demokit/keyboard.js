@@ -80,12 +80,22 @@ module.exports.type = async function type({ window, children })
 
 module.exports.br = br;
 
-async function br({ window, pause = 0 })
+async function br({ window, pause = 0, count = 1 })
 {try {
-    await insertText({ window, text: "\n" });
+    await insertText({ window, text: repeat("\n", count) });
 
     if (pause > 0)
         await delay(pause); } catch(e) { console.log(e) }
+}
+
+function repeat(pattern, count) {
+    if (count < 1) return '';
+    var result = '';
+    while (count > 1) {
+        if (count & 1) result += pattern;
+        count >>= 1, pattern += pattern;
+    }
+    return result + pattern;
 }
 
 async function insertText({ window, text, WPM = 160 })

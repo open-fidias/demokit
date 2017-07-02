@@ -121,7 +121,7 @@ module.exports.style = async function({ id, origin, x, y, dx, opacity, width, he
 
         if (y !== undefined)
             y = newY;
-    
+
         if (dx !== undefined)
             x = newX + dx;
     }
