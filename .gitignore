@@ -30,3 +30,4 @@ debug.log
 npm-debug.log
 videos
 electron/demokit/build
+electron/dist

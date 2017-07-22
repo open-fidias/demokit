@@ -2,7 +2,6 @@ const path = require("path");
 const scene = require("./scene");
 const moment = require("moment");
 const ffmpeg = require('fluent-ffmpeg');
-// console.log('typeof', typeof ffmpeg);
 const expandTilde = require("expand-tilde");
 const { convert, Scene, Global } = require("./coordinate-space");
 const { delay } = require("bluebird");
@@ -80,7 +79,7 @@ module.exports.start = async function({
         })
         .on('error', function(e) {
             console.log('Screen Capture Completed.');
-            console.error(e);
+            // console.error(e);
         });
 
     console.log("Starting Screen Capture");

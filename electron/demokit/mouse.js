@@ -3,7 +3,6 @@ const execute = require("demokit/execute");
 const { wait } = require("./demokit");
 const { Workspace, Scene, convert } = require("./coordinate-space");
 const { getCenterRect, getBoundingClientRect } = require("./geometry");
-// const { getCursor, performClick } = require("bindings")("mouse");
 const robot = require('robotjs')
 
 
