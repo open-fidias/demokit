@@ -50,7 +50,9 @@
       "description": "Beautiful Demos with JSX",
       "maintainer": "Átila Camurça <camurca.home@gmail.com>",
       "target": [
-        "AppImage", "deb", "tar.gz"
+        "AppImage",
+        "deb",
+        "tar.gz"
       ],
       "category": "Video",
       "packageCategory": "video"

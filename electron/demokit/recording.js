@@ -37,7 +37,7 @@ module.exports.start = async function({
     const options = {};
 
     let videoCodec = options.videoCodec || "libx264";
-    let videoBitrate = options.videoBitrate || "1000k";
+    let videoBitrate = options.videoBitrate || "2000k";
     let audioBitrate = options.audioBitrate || "96k";
     let format = options.format || "mp4";
 
@@ -68,6 +68,9 @@ module.exports.start = async function({
 
     context.movie = ffmpeg()
         .input(`${input}+${x}.${y}`)
+        .videoCodec(videoCodec)
+        .videoBitrate(videoBitrate, true)
+        .noAudio()
         .inputOptions([
             `-s ${width}x${height}`,
             `-f ${inputScreen}`

@@ -66,6 +66,13 @@ $ demokit ./my-demo/index.js
 
 The `new` command will create a template project for you. Simply edit the index.js, or add more files, and then run using the demokit command.
 
+# Troubleshooting
+
+```bash
+cd electron/demokit
+npm rebuild --runtime=electron --target=1.6.11 --disturl=https://atom.io/download/atom-shell --abi=57
+```
+
 # Documentation
 
 Visit the [Wiki](https://github.com/runkitdev/demokit/wiki/Home) for our documentation.
